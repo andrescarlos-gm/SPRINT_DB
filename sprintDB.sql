@@ -1,3 +1,5 @@
+-- SCRIPT CREADOR DE TABLAS
+
 CREATE TABLE cliente (rutcliente NUMERIC(9) PRIMARY KEY, clinombres VARCHAR(30) NOT NULL, 
 cliapellidos VARCHAR(30) NOT NULL, clitelefono VARCHAR (20) NOT NULL, cliafp VARCHAR (30), 
 clisistemasalud NUMERIC (2), clidireccion VARCHAR(70), clicomuna VARCHAR (50), 
@@ -10,3 +12,10 @@ CREATE TABLE Accidente (idaccidente NUMERIC (9) PRIMARY KEY, accifecha DATE NOT 
 acciorigen VARCHAR (100) NOT NULL, acciconsecuencias VARCHAR (100), Cliente_rutcliente NUMERIC (9) NOT NULL);
 CREATE TABLE Visita (idvisita NUMERIC (9) PRIMARY KEY, visfecha DATE NOT NULL, vishora TIME, vislugar VARCHAR(50) NOT NULL, 
 viscomentarios VARCHAR (250) NOT NULL, Cliente_rutcliente NUMERIC (9) NOT NULL);
+
+-- DEFINICION DE LLAVES FORANEAS
+
+ALTER TABLE capacitacion ADD CONSTRAINT Capacitacion_Cliente_FK FOREIGN KEY (Cliente_rutcliente)
+ALTER TABLE asistentes ADD CONSTRAINT Asistentes_Capacitacion_FK FOREIGN KEY (Capacitacion_idcapacitacion)
+ALTER TABLE accidente ADD CONSTRAINT Accidente_Cliente_FK FOREIGN KEY (Cliente_rutcliente) 
+ALTER TABLE visita ADD CONSTRAINT Visita_Cliente_FK FOREIGN KEY (Cliente_rutcliente)
